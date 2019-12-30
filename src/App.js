@@ -1,8 +1,10 @@
-import React from 'react';
+import React,{components} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+
+class App extends components{
+render(){
   return (
     <div className="App">
       <header className="App-header">
@@ -18,9 +20,13 @@ function App() {
         >
           Learn React
         </a>
+        <button>Toggle Konami</button>
+     
       </header>
+      
     </div>
   );
+}
 }
 
 export default App;
