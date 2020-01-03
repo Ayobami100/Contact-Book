@@ -3,30 +3,34 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/app';
 import * as serviceWorker from './serviceWorker';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import { Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import Users from './components/user'
 import Contact from './components/contact'
-
+import Notfound from './components/notfound'
+import './index.css'
 
 const routing = (
     <Router>
-        <div>
-        <ul>
-            <li>
-            <Link to="/">Home</Link>
-            </li>
-            <li>
-            <Link to="/users">Users</Link>
-            </li>
-            <li>
-            <Link to="/contact">Contact</Link>
-            </li>
-        </ul>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/users">Users</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>
+      </ul>
+      <Switch>
         <Route exact path="/" component={App} />
         <Route path="/users" component={Users} />
         <Route path="/contact" component={Contact} />
-        </div>
-    </Router>
+        <Route component={Notfound} />
+      </Switch>
+    </div>
+  </Router>
   )
 
 
