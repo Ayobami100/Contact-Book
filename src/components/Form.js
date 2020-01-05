@@ -52,7 +52,7 @@ export const Formy = () =>(
   </Form.Row>
 
   <Button variant="primary" type="submit">
-    Submit
+    Save
   </Button>
 </Form>
 
