@@ -23,24 +23,20 @@ color:#bbb;
 
 export const NavigationBar = () => (
 <Styles>
-    <Row>
-        <Col md={12}>
-            <Navbar>
-                <Navbar.Brand href="/">
-                    Contact-Book
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="bio">
-                        {/* <Nav.Item><Nav.Link to="/">Home</Nav.Link></Nav.Item> */}
-                        <Nav.Item><Nav.Link href="/contact-book">Contact</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="/single-view">Single Contact View</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="/edit-page">Edit Contact</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="/about">About</Nav.Link></Nav.Item>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-        </Col>
-    </Row>
+    <Navbar expand="lg">
+        <Navbar.Brand href="/">
+            Contact-Book
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+        <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ml-auto">
+                {/* <Nav.Item><Nav.Link to="/">Home</Nav.Link></Nav.Item> */}
+                <Nav.Item><Nav.Link href="/contact-book">Contact</Nav.Link></Nav.Item>
+                <Nav.Item><Nav.Link href="/single-view">Single Contact View</Nav.Link></Nav.Item>
+                <Nav.Item><Nav.Link href="/edit-page">Edit Contact</Nav.Link></Nav.Item>
+                <Nav.Item><Nav.Link href="/about">About</Nav.Link></Nav.Item>
+            </Nav>
+        </Navbar.Collapse>
+    </Navbar>
 </Styles>
 )

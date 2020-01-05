@@ -10,7 +10,7 @@ export const Formy = () =>(
       <Form.Label>Number</Form.Label>
       <Form.Control type="text" placeholder="Enter Number" />
     </Form.Group>
-    <Form.Group as={Col} controlId="formGridEmail">
+    <Form.Group as={Col} controlId="formName">
       <Form.Label>FirstName</Form.Label>
       <Form.Control type="text" placeholder="Enter First Name" />
     </Form.Group>
