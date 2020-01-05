@@ -6,6 +6,7 @@ class about extends React.Component {
     return (
       <div>
         <h1>About Page</h1>
+        <p>A faster way to save contacts</p>
       </div>
     )
   }
