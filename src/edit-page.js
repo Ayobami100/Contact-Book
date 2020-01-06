@@ -1,7 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { Formy } from './components/Form';
+
 class edits extends React.Component {
   render() {
-    return <h1>Edit Contact</h1>
+    return (
+      <div>
+        <h1>Edit Contact</h1>
+        <br/>
+        <Formy />
+      </div>
+    )
   }
 }
 export default edits

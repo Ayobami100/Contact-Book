@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 //
 // 
@@ -11,12 +11,23 @@ import welcome from './welcome';
 import Notfound from './notfound';
 import {Layout} from './components/Layout';
 import {NavigationBar} from './components/NavigationBar';
-import { Jumbotron } from './components/Jumbotron'
-
+import { Jumbotron } from './components/Jumbotron';
 
 
 class App extends Component{
-
+  componentDidMount() {
+    // fetch('http://jsonplaceholder.typicode.com/users')
+    fetch('https://mfoncontact.herokuapp.com/contact')
+    .then(res => res.json())
+    .then((dati) => {this.setState({ list:dati })
+    console.log(dati)})
+    // .then(res => res.json())
+    // .then((data) => {
+    //   this.setState({ contacts: data })
+    //   console.log(data);
+    // })
+    // .catch(console.log)
+  }
 
   render(){
     return(
