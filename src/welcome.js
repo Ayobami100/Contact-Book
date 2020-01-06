@@ -11,7 +11,7 @@
       }
 
       componentDidMount() {
-        fetch('http://jsonplaceholder.typicode.com/users')
+        fetch('https://jsonplaceholder.typicode.com/users')
         
         .then(res => res.json())
         .then((data) => {
@@ -28,11 +28,11 @@
         <h1>Welcome</h1>
 
         <center><h1>Contact List</h1></center>
-        {contacts.map((item) => (
-          <div className="card">
+        {contacts.map((item, itemIndex) => (
+          <div className="card" key={itemIndex}>
           
             <div className="card-body">
-              <h5 class="card-title">{item.name}</h5>              
+              <h5 className="card-title">{item.name}</h5>              
               <h6 className="card-subtitle mb-2 text-muted">{item.email}</h6>
               <p className="card-text">{item.company.catchPhrase}</p>
               <Button variant="primary">Edit</Button>
