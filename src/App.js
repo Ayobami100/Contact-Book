@@ -17,17 +17,17 @@ import { Jumbotron } from './components/Jumbotron';
 class App extends Component{
   componentDidMount() {
     // fetch('https://jsonplaceholder.typicode.com/users')
-    // fetch('https://mfoncontact.herokuapp.com/contact')
-    // .then(res => res.json())
-    // .then((dati) =>  {
-    //   this.setState({ list:dati })
+    fetch('https://mfoncontact.herokuapp.com/contact')
+    .then(res => res.json())
+    .then((dati) =>  {
+      this.setState({ list:dati })
       // console.log(dati)})
       // .then(res => res.json())
       // .then((data) => {
       //   this.setState({ contacts: data })
       //   console.log(data);
-    // })
-    // .catch(console.log)
+    })
+    .catch(console.log)
   }
 
   render(){
