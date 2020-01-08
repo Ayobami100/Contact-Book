@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 
 class single extends React.Component {
   constructor(props){
@@ -21,8 +20,10 @@ class single extends React.Component {
     .then((data) => {
     this.setState({ contacts: data })
     console.log(data);
-    let name = document.getElementsByTagName('h2').innerHTML
-    name = data;
+    document.getElementById('p1').innerText = data.telephone
+    document.getElementById('p2').innerText = data.first_name+' '+data.last_name
+    document.getElementById('p3').innerText = data.note
+    document.getElementById('p4').innerText = data.company_name
     })
     .catch(console.log)
 
@@ -30,13 +31,20 @@ class single extends React.Component {
   render() {
     
     return (
-    <div>
-      <h1> Single Contact View</h1>
-      <h2></h2>
-      <h2></h2>
-      <h3></h3>
-      <h4></h4>
-    </div>
+    <center> 
+      <div>
+        <h1> Single Contact View</h1><br/>
+        <div className="card">
+          
+          <div className="card-body">
+            <h2 id="p1">...</h2>
+            <h2 id="p2">...</h2>
+            <h3 id="p3">...</h3>
+            <h4 id="p4">...</h4>
+          </div>
+        </div>
+      </div>
+    </center>
     )
   }
 }
