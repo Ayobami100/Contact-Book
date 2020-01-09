@@ -2,6 +2,7 @@ import React from 'react';
 // import { render } from 'react-dom';
 import { Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios'
+import {withRouter} from 'react-router'
 
 class Formy extends React.Component {
 constructor(props){
@@ -24,28 +25,14 @@ constructor(props){
     this.handleChange = this.handleChange.bind(this);
     this.addContact = this.addContact.bind(this);
     this.fetchWithId = this.fetchWithId.bind(this)
-    this.gotoHomePage = this.gotoHomePage.bind(this)
 }
 handleChange(e){
     let inputId = e.target.getAttribute('input-id');
     this.setState({ [inputId] : e.target.value });
     
 }
-gotoHomePage(){
-    window.parent.location = window.parent.location.href;
-  }
-// handleValueChange(e){
-//    console.log(e)
-//     this.setState({
-//         forTelephone : e.currenttarget.value,
-//         forCompany :  e.target.value,
-//         forFirstName : e.target.value,
-//         forLastName :  e.target.value,
-//         forNote : e.target.value,
-//         // contactIden: contactId
-//       })
-    
-// }
+
+
 handedChanged(data){
     const pathString = window.location.pathname
     let pathStringSplit = pathString.split('/')
@@ -87,9 +74,11 @@ fetchWithId(id){
 
 addContact(e){
     e.preventDefault();
-   
+    var self = this
+    
     if(this.props.name === 'Save'){
-       
+        
+        console.log(self)
         axios.post('https://mfoncontact.herokuapp.com/contact/', {
         "first_name":this.state.firstName,
         "last_name":this.state.lastName,
@@ -100,13 +89,16 @@ addContact(e){
         .then(function (response) {
         // console.log(response);
         window.alert('Contact Saved!')
-        this.props.history.push('/welcome')
+        self.props.history.push('/')
+        }).catch(function (error) {
+            // handle error
+            console.error(error);
+      
         })
-        .catch(function (error) {
-        console.log(error);
-        });
     }
     else{
+        // var self = this
+        console.log(self)
         axios.put('https://mfoncontact.herokuapp.com/contact/'+this.state.contactIden+'/', {
        
             "first_name":this.state.firstName,
@@ -116,16 +108,16 @@ addContact(e){
             "note":this.state.note
         })
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
             window.alert('Contact Updated!')
-            this.props.history.push('/welcome')
-        })
+            self.props.history.push('/')
+            })
         .catch(function (error) {
-        console.log(error);
-        });   
-       
+            // handle error
+            console.error(error);
       
-    }
+        })
+}
 }
 
  
@@ -172,4 +164,4 @@ render(){
 
 
 
-export default Formy;
+export default withRouter(Formy);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Button} from 'react-bootstrap';
 import axios from 'axios';
+// import { filter } from 'minimatch';
 
 class welcome extends Component {
   // Initialize the state
@@ -14,11 +15,10 @@ class welcome extends Component {
     this.loadApi = this.loadApi.bind(this)
     this.gotoEditPage = this.gotoEditPage.bind(this)
     this.gotoViewpage = this.gotoViewpage.bind(this)
-    this.gotoHomepage = this.gotoHomepage.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
-    // fetch('https://jsonplaceholder.typicode.com/users')
     this.loadApi();
   }
   
@@ -34,33 +34,35 @@ class welcome extends Component {
   }
 
 
-  
-
+  handleClick(itemId) {
+    let list = this.state.contacts;
+   
+    let list2 = list.filter(x => {
+      return x.id !== parseInt(itemId)
+    })
+    
+    this.setState({
+      contacts: list2
+    });
+  }
 
 
   deleteContact(e) {
+    var self = this
     const contactId = e.target.getAttribute('contact-id');
-    this.forceUpdate()
+    console.log(self)
     axios.delete('https://mfoncontact.herokuapp.com/contact/' + contactId)
     .then(function (response) {
       // handle success
       window.alert('Contact Deleted!')
-     
-      // console.log(response);
-      //
+      self.handleClick(contactId)
+      window.alert('this is contactID '+contactId)
     })
     .catch(function (error) {
       // handle error
       console.log(error);
     })
-    .finally(function () {
-     
-    });
   
-  }
-
-  gotoHomepage(e){
-    this.props.history.push('/welcome')
   }
 
 
